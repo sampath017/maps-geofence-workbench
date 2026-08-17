@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 11 14 20;
+    --panel: 16 20 29;
+    --border: 35 42 58;
+    --text: 232 234 237;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html,
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #0b0e14;
+    color: #e8eaed;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+    overflow: hidden;
+  }
+}
+
+/* Custom modern scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0b0e14;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #232a3a;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #364156;
+}
+
+/* Leaflet Container & Canvas Dark Mode Overrides */
+.leaflet-container {
+  background-color: #0b0e14 !important;
+  font-family: inherit;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.leaflet-bar {
+  border: 1px solid #232a3a !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+  border-radius: 6px !important;
+  overflow: hidden;
+}
+
+.leaflet-bar a {
+  background-color: #10141d !important;
+  color: #e8eaed !important;
+  border-bottom: 1px solid #232a3a !important;
+  transition: all 0.15s ease;
+}
+
+.leaflet-bar a:hover {
+  background-color: #1c2331 !important;
+  color: #ff8a34 !important;
+}
+
+.leaflet-control-attribution {
+  display: none !important;
+}
+
+/* Geoman Toolbar Dark HUD Reskin */
+.leaflet-pm-toolbar {
+  border: 1px solid #232a3a !important;
+  border-radius: 6px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6) !important;
+  overflow: hidden;
+  background: #10141d !important;
+}
+
+.leaflet-pm-toolbar a {
+  background-color: #10141d !important;
+  border-color: #232a3a !important;
+  color: #8b93a7 !important;
+}
+
+.leaflet-pm-toolbar a:hover,
+.leaflet-pm-toolbar a.active {
+  background-color: #1c2331 !important;
+  color: #ff8a34 !important;
+}
+
+.leaflet-pm-icon-marker,
+.leaflet-pm-icon-polyline,
+.leaflet-pm-icon-polygon,
+.leaflet-pm-icon-edit,
+.leaflet-pm-icon-drag,
+.leaflet-pm-icon-delete {
+  filter: invert(0.85) hue-rotate(180deg) brightness(1.2);
+}
+
+/* Custom Tooltip Styling */
+.leaflet-tooltip {
+  background: rgba(16, 20, 29, 0.92) !important;
+  border: 1px solid #364156 !important;
+  color: #4fd1c5 !important;
+  font-family: ui-monospace, "SF Mono", monospace !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  padding: 4px 8px !important;
+  border-radius: 4px !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6), 0 0 10px rgba(79, 209, 197, 0.15) !important;
+  backdrop-filter: blur(6px);
+}
+
+.leaflet-tooltip-top:before {
+  border-top-color: #364156 !important;
+}
+
+.leaflet-tooltip-bottom:before {
+  border-bottom-color: #364156 !important;
+}
+
+.leaflet-tooltip-left:before {
+  border-left-color: #364156 !important;
+}
+
+.leaflet-tooltip-right:before {
+  border-right-color: #364156 !important;
+}
+
+/* Custom Pulsing Waypoint Pin */
+.waypoint-pin {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.waypoint-pin-inner {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #4fd1c5;
+  border: 2px solid #0b0e14;
+  box-shadow: 0 0 10px rgba(79, 209, 197, 0.8), 0 0 0 1px #4fd1c5;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.waypoint-pin:hover .waypoint-pin-inner {
+  transform: scale(1.3);
+  background: #ff8a34;
+  box-shadow: 0 0 14px rgba(255, 138, 52, 0.9), 0 0 0 1px #ff8a34;
+}
+
+.waypoint-pin-pulse {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(79, 209, 197, 0.25);
+  animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  pointer-events: none;
+}
+
+/* Origin & Destination Specialized Markers */
+.origin-pin-inner {
+  background: #10b981 !important;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.9), 0 0 0 1px #10b981 !important;
+}
+
+.dest-pin-inner {
+  background: #ff8a34 !important;
+  box-shadow: 0 0 12px rgba(255, 138, 52, 0.9), 0 0 0 1px #ff8a34 !important;
+}
+
+/* Range input styling for speed simulator */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: #232a3a;
+  border-radius: 4px;
+  height: 6px;
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #ff8a34;
+  cursor: pointer;
+  box-shadow: 0 0 8px rgba(255, 138, 52, 0.7);
+  transition: transform 0.1s ease;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+}
